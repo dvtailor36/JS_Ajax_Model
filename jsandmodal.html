@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+
+	
+	<br>
+	<div class="row">
+		<div class="form-group">
+			<div class="col-lg-4">
+				<input type="text" class="form-control" name="One" id="One" value="One">
+			</div>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" name="Two" id="Two" value="Two">
+			</div>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" name="Three" id="Three" value="Three">
+			</div>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="row">
+		<div class="form-group">
+			<div class="col-lg-offset-4 col-lg-3">
+
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+				<button type="button" class="btn btn-info btn-lg" id="7" data-id="1" data-name="BTC" onclick="myfunction()" >Open Modal</button>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<p>Some text in the modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<!-- <button type="button" class="btn btn-default" onclick="myfunction()">Close</button> -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+		function myfunction()
+		{
+			$.mycallfunction();
+		}
+
+		$.mycallfunction= function()
+		{
+			var id = event.srcElement.id;
+			var FullDetailsOfField = document.getElementById(id);	
+			var idd = FullDetailsOfField.dataset.id;
+			var name = FullDetailsOfField.dataset.name;
+
+			
+			$.ajax({ url:"jsonajaxphp.php?id="+idd+"&name="+name+"",success:function(e){ 
+				
+				$("#One").val("Balance Information");
+				$("#Two").val("No Pending transaction found");
+				$("#Three").val("Welldone Dhruv");
+				$("#myModal").modal('show');
+
+			}})
+		}
+	</script>
+
+</body>
+</html>
